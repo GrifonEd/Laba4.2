@@ -55,6 +55,12 @@ namespace Лаба4Часть2_ООП
             progressBar1.Value = e.X;
         }
     }
+    БЛаблабла
+
+        ОЧень важно
+
+        Обожаю Олю :)))
+
 
 
   /*  public class Model
