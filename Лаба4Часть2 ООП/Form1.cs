@@ -12,22 +12,23 @@ namespace Лаба4Часть2_ООП
 {
     public partial class Form1 : Form
     {
-        int milky = 22;
-        int way = 4;
         public Form1()
         {
             InitializeComponent();
-            button1.Size= new System.Drawing.Size(milky, milky);
-            textBox1.Text=  milky.ToString();
-            progressBar1.Value = (int)(milky / 2.77);
+            button1.Size= new System.Drawing.Size(this.button1.Width, this.button1.Height);
+            textBox1.Text=  button1.Size.Width.ToString();
+            if (Width > 277)
+                progressBar1.Value = 277;
+            else
+            progressBar1.Value = button1.Size.Width;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            button1.Size = new System.Drawing.Size( this.button1.Width+10, this.button1.Height + 10);
-            if ((progressBar1.Value)<= 97)
-            progressBar1.Value += (int)(10/2.77);
-            else progressBar1.Value = 100;
+            button1.Size = new System.Drawing.Size( Width+10, Height+10);
+            if ((progressBar1.Value) <= 270)
+                progressBar1.Value += 10;
+            else progressBar1.Value = 277;
             textBox1.Text = button1.Width.ToString();
         }
 
@@ -38,11 +39,11 @@ namespace Лаба4Часть2_ООП
                  
                 button1.Size = new System.Drawing.Size(Int32.Parse(textBox1.Text), Int32.Parse(textBox1.Text));
                 if (Int32.Parse(textBox1.Text) > 277)
-                    progressBar1.Value = 100;
+                    progressBar1.Value = 277;
                 else if (Int32.Parse(textBox1.Text) < 0)
                     progressBar1.Value = 0;
                 else
-                    progressBar1.Value = (int)(Int32.Parse(textBox1.Text)/2.77);
+                    progressBar1.Value = Int32.Parse(textBox1.Text);
             }
         }
 
@@ -51,7 +52,7 @@ namespace Лаба4Часть2_ООП
 
             textBox1.Text = e.X.ToString();
             button1.Size = new System.Drawing.Size(e.X, e.X);
-            progressBar1.Value = (int)(e.X/2.77);
+            progressBar1.Value = e.X;
         }
     }
 
@@ -61,7 +62,7 @@ namespace Лаба4Часть2_ООП
         private int value;
         public void setValue
         {
-
+   value 
         }
     }*/
 }

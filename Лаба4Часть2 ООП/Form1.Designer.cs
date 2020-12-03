@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button1 = new System.Windows.Forms.Button();
@@ -44,6 +45,7 @@
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(684, 418);
+            this.progressBar1.Maximum = 277;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(417, 137);
             this.progressBar1.TabIndex = 1;
@@ -51,9 +53,10 @@
             // 
             // button1
             // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(12, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(353, 137);
+            this.button1.Size = new System.Drawing.Size(113, 44);
             this.button1.TabIndex = 2;
             this.button1.Text = "Увеличить размер";
             this.button1.UseVisualStyleBackColor = true;
