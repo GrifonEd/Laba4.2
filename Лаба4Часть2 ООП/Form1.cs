@@ -12,47 +12,57 @@ namespace Лаба4Часть2_ООП
 {
     public partial class Form1 : Form
     {
+        Model model;
         public Form1()
         {
             InitializeComponent();
-            button1.Size= new System.Drawing.Size(this.button1.Width, this.button1.Height);
-            textBox1.Text=  button1.Size.Width.ToString();
-            if (Width > 277)
-                progressBar1.Value = 277;
-            else
-            progressBar1.Value = button1.Size.Width;
+            model = new Model();
+            model.observers += new System.EventHandler(this.UpdateFromModel);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            button1.Size = new System.Drawing.Size( Width+10, Height+10);
-            if ((progressBar1.Value) <= 270)
-                progressBar1.Value += 10;
-            else progressBar1.Value = 277;
-            textBox1.Text = button1.Width.ToString();
+            model.setValue(model.getValue() + 10); 
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
             {
-                 
-                button1.Size = new System.Drawing.Size(Int32.Parse(textBox1.Text), Int32.Parse(textBox1.Text));
-                if (Int32.Parse(textBox1.Text) > 277)
-                    progressBar1.Value = 277;
-                else if (Int32.Parse(textBox1.Text) < 0)
-                    progressBar1.Value = 0;
-                else
-                    progressBar1.Value = Int32.Parse(textBox1.Text);
+                model.setValue(Int32.Parse(textBox1.Text));
             }
+            
         }
 
         private void progressBar1_MouseMove(object sender, MouseEventArgs e)
         {
 
-            textBox1.Text = e.X.ToString();
-            button1.Size = new System.Drawing.Size(e.X, e.X);
-            progressBar1.Value = e.X;
+            model.setValue(e.X);
+        }
+        private void UpdateFromModel(object sender,EventArgs e)
+        {
+            textBox1.Text = model.getValue().ToString();
+            progressBar1.Value = model.getValue();
+            button1.Size = new System.Drawing.Size(model.getValue(), model.getValue());
+        }
+    }
+    class Model
+    {
+        public System.EventHandler observers;  
+        private int value;
+        public void setValue(int value)
+        {
+            if (value > 277)
+                this.value = 277;
+            else if (value < 0)
+                this.value = 0;
+            else this.value = value;
+
+            observers.Invoke(this, null);
+        }
+        public int getValue()
+        {
+            return value;
         }
     }
 }
